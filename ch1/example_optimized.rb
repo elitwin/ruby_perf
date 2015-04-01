@@ -20,9 +20,8 @@ if ARGV[1] == '--mem'
   puts "Create Memory = #{mem}"
 end
 
+csv = ''
 time = Benchmark.realtime do
-#  csv = data.map { |row| row.join(",") }.join("\n")
-  csv = ''
   num_rows.times do |i|
     num_cols.times do |j|
       csv << data[i][j]
