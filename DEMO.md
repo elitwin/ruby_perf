@@ -68,3 +68,11 @@ Third example - for certain cases, don't use ActiveRecord
 > Thing.where('id=1').pluck(:id, :col1) # this works
 
 > Thing.where('id < 10').update_all(col1: 'z' * 100)
+
+#### Chapter 4
+
+Profiling - just a taste
+
+$ gem install ruby-prof
+
+$ ruby ruby_prof_example_api.rb

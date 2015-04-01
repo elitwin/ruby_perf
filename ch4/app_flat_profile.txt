@@ -1,0 +1,16 @@
+Measure Mode: wall_time
+Thread ID: 9550220
+Fiber ID: 18068740
+Total: 1.201175
+Sort by: self_time
+
+ %self      total      self      wait     child     calls  name
+ 29.47      0.938     0.354     0.000     0.584   150000   Object#parse_col 
+ 24.81      0.562     0.298     0.000     0.264    50000   <Class::Date>#parse 
+ 10.10      0.121     0.121     0.000     0.000   100000   Regexp#match 
+  6.08      0.073     0.073     0.000     0.000    50001   String#split 
+  5.21      0.063     0.063     0.000     0.000    50000   String#gsub! 
+  3.67      1.124     0.044     0.000     1.080    50000   Object#parse_row 
+  3.19      1.162     0.038     0.000     1.124    50002  *Array#map! 
+
+* indicates recursively called methods
