@@ -76,3 +76,5 @@ Profiling - just a taste
 $ gem install ruby-prof
 
 $ ruby ruby_prof_example_api.rb
+
+$ ruby-prof -p flat -m 1 -f ruby_prof_example_command_profile.txt ruby_prof_example_command.rb
