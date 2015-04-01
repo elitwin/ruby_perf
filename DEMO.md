@@ -19,3 +19,8 @@ Measurements with and without GC will differ.
 
 * With GC, we will get amount of memory allocated by the block that stays allocated after we are done - useful for finding memory leaks
 * Without GC, we will get total memory consumption
+
+String manipulation
+
+* bang! functions for in-place modification - good for memory usage (not 'functional' though)
+* Free collections during iteration if possible (each_bang.rb)
