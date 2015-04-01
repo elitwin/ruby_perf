@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: 5
+
+development:
+  <<: *default
+  database: ch3_development
+  #username: elitwin
+  #password: elitwin
+  #host: localhost
+  #port: 5432
+
+test:
+  <<: *default
+  database: ch3_test
+
+production:
+  <<: *default
+  database: ch3_production

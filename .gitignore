@@ -35,3 +35,16 @@ build/
 .rvmrc
 
 *.csv
+
+# For Rails app in ch3
+# Ignore bundler config.
+/ch3/.bundle
+
+# Ignore the default SQLite database.
+/ch3/db/*.sqlite3
+/ch3/db/*.sqlite3-journal
+
+# Ignore all logfiles and tempfiles.
+/ch3/log/*
+!/ch3/log/.keep
+/ch3/tmp

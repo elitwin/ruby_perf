@@ -24,3 +24,47 @@ String manipulation
 
 * bang! functions for in-place modification - good for memory usage (not 'functional' though)
 * Free collections during iteration if possible (each_bang.rb)
+
+#### Chapter 3
+
+$ RAILS_ENV=production rake db:create && RAILS_ENV=production rake db:migrate
+
+$ psql ch3_production
+
+ch3_development=# select pg_size_pretty(pg_relation_size('things'));
+
+This shows database size of 11 MB
+
+Add lib/measure.rb and modify config/application to load files in lib
+
+* config.autoload_paths << Rails.root.join('lib')
+
+First example - load only attributes you need
+
+$ RAILS_ENV=production bundle exec rails c
+
+> Measure.run(gc: :disable) { Thing.all.load }
+
+> Measure.run(gc: :disable) { Thing.all.select([:id, :col1, :col5]).load }
+
+Second example - preload data
+
+> Measure.run(gc: :disable) { Thing.all.each { |thing| thing.minions.load } }
+
+> Measure.run(gc: :disable) { Thing.first(100).each { |thing| thing.minions.load } }
+
+> Measure.run(gc: :disable) { Thing.all.includes(:minions).load }
+
+> Measure.run(gc: :disable) { Thing.where('id <= 100').includes(:minions).load }
+
+Third example - for certain cases, don't use ActiveRecord
+
+> arr = ActiveRecord::Base.connection.execute("select * from things")
+
+> Thing.all.pluck(:id, :col1)
+
+> Thing.find(1).pluck(:id, :col1) # doesn't work - find(1) returns ActiveRecord, not ActiveRelation
+
+> Thing.where('id=1').pluck(:id, :col1) # this works
+
+> Thing.where('id < 10').update_all(col1: 'z' * 100)
